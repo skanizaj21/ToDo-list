@@ -1,5 +1,3 @@
-import './css/todo-item.css';
-
 export class TodoItem extends HTMLElement {
     private taskText: HTMLSpanElement;
 
@@ -19,6 +17,7 @@ export class TodoItem extends HTMLElement {
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
         removeButton.addEventListener('click', () => {
+            this.dispatchEvent(new CustomEvent('remove-task', { bubbles: true, composed: true }));
             this.remove();
         });
 

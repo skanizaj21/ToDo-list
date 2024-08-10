@@ -4,21 +4,19 @@
     border-radius: 8px;
     margin-bottom: 8px;
     padding: 0.5em 1em;
-    color: rgba(255, 255, 255, 0.87); /* This is good for visibility */
-}
-
-:host([hidden]) {
-    display: none;
+    color: rgba(255, 255, 255, 0.87);
+    width: 100%; /* Ensure it takes up full width */
 }
 
 div {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 span {
     margin-left: 8px;
-    color: rgba(255, 255, 255, 0.87); /* Ensure text inherits or uses a visible color */
+    flex-grow: 1;
 }
 
 button {

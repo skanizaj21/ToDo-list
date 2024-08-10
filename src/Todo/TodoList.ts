@@ -1,6 +1,4 @@
-import './css/todo-list.css';
-
-import { TodoItem } from './TodoItem';
+import { TodoItem } from "./TodoItem";
 
 export class TodoList extends HTMLElement {
     constructor() {
@@ -18,15 +16,18 @@ export class TodoList extends HTMLElement {
 
     addTask(task: string) {
         const list = this.shadowRoot?.querySelector('ul');
-        
+
         if (task && list) {
             const todoItem = document.createElement('todo-item') as TodoItem;
             todoItem.setAttribute('content', task);
-            console.log('Task being added:', task);
-    
+
             const listItem = document.createElement('li');
             listItem.appendChild(todoItem);
-    
+
+            todoItem.addEventListener('remove-task', () => {
+                listItem.remove();
+            });
+
             list.appendChild(listItem);
         }
     }

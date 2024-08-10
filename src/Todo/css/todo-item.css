@@ -4,23 +4,24 @@
     border-radius: 8px;
     margin-bottom: 8px;
     padding: 0.5em 1em;
-    color: rgba(255, 255, 255, 0.87);
-  }
-  
-  :host([hidden]) {
+    color: rgba(255, 255, 255, 0.87); /* This is good for visibility */
+}
+
+:host([hidden]) {
     display: none;
-  }
-  
-  div {
+}
+
+div {
     display: flex;
     align-items: center;
-  }
-  
-  span {
+}
+
+span {
     margin-left: 8px;
-  }
-  
-  button {
+    color: rgba(255, 255, 255, 0.87); /* Ensure text inherits or uses a visible color */
+}
+
+button {
     margin-left: 8px;
     border-radius: 8px;
     border: 1px solid transparent;
@@ -31,9 +32,9 @@
     color: #fff;
     cursor: pointer;
     transition: border-color 0.25s, background-color 0.25s;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #444;
     border-color: #646cff;
-  }
+}

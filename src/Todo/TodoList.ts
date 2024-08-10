@@ -1,3 +1,5 @@
+import './css/todo-list.css';
+
 import { TodoItem } from './TodoItem';
 
 export class TodoList extends HTMLElement {
@@ -20,10 +22,11 @@ export class TodoList extends HTMLElement {
         if (task && list) {
             const todoItem = document.createElement('todo-item') as TodoItem;
             todoItem.setAttribute('content', task);
-
+            console.log('Task being added:', task);
+    
             const listItem = document.createElement('li');
             listItem.appendChild(todoItem);
-
+    
             list.appendChild(listItem);
         }
     }

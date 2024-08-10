@@ -1,7 +1,8 @@
-export class TodoList extends HTMLElement{
-    constructor(){
-        super();
+import { TodoItem } from './TodoItem';
 
+export class TodoList extends HTMLElement {
+    constructor() {
+        super();
         this.attachShadow({ mode: 'open' });
 
         const wrapper = document.createElement('div');
@@ -13,17 +14,19 @@ export class TodoList extends HTMLElement{
         this.shadowRoot?.appendChild(wrapper);
     }
 
-    addTaks(task: any){
+    addTask(task: string) {
         const list = this.shadowRoot?.querySelector('ul');
-
-        if(task){
-            const todoItem = document.createElement('todo-item');
+        
+        if (task && list) {
+            const todoItem = document.createElement('todo-item') as TodoItem;
             todoItem.setAttribute('content', task);
 
             const listItem = document.createElement('li');
             listItem.appendChild(todoItem);
 
-            list?.appendChild(listItem);
+            list.appendChild(listItem);
         }
     }
 }
+
+customElements.define('todo-list', TodoList);

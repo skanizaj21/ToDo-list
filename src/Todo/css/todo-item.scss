@@ -5,18 +5,28 @@
     margin-bottom: 8px;
     padding: 0.5em 1em;
     color: rgba(255, 255, 255, 0.87);
-    width: 100%; /* Ensure it takes up full width */
+    width: 100%;
 }
 
 div {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
 }
 
 span {
     margin-left: 8px;
     flex-grow: 1;
+    transition: text-decoration 0.3s ease; 
+}
+
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
 }
 
 button {

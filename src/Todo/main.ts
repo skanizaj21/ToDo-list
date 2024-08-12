@@ -34,15 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); 
         const task = taskInput.value.trim();
         if (task) {
-          console.log("Task:", task); 
-          todoList.addTask(task); 
+          todoList.addTask(task);
           taskInput.value = ''; 
         } else {
-          console.log("No task"); 
+          console.log("No task entered"); 
         }
       });
     } else {
-      console.error("addTaskForm taskInput or todoList is null"); 
+      console.error("addTaskForm, taskInput, or todoList is null");
     }
+  } else {
+    console.error("#app element not found in DOM");
   }
 });

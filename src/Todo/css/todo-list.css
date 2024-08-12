@@ -9,7 +9,7 @@ ul {
 }
 
 li {
-    display: block;  /* Ensure each list item is a block */
-    width: 100%;     /* Ensure it takes up full width */
-    margin-bottom: 8px; /* Space between items */
+    display: block; 
+    width: 100%;     
+    margin-bottom: 8px; 
 }

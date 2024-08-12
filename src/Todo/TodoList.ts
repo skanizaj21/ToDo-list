@@ -22,14 +22,18 @@ export class TodoList extends HTMLElement {
         this.shadowRoot?.appendChild(wrapper);
     }
 
-    addTask(task: string) {
+    addTask(task: string, fromAPI: boolean = false) {
         const todoItem = document.createElement('todo-item') as TodoItem;
         todoItem.setAttribute('content', task);
+        if (fromAPI) {
+            todoItem.classList.add('api-task');  // Apply different style for API tasks
+        } else {
+            todoItem.classList.add('manual-task');  // Add class for manual tasks
+        }
 
         const listItem = document.createElement('li');
         listItem.appendChild(todoItem);
 
-        // Listen for the custom events emitted by TodoItem
         todoItem.addEventListener('task-toggled', (event: Event) => {
             const customEvent = event as CustomEvent<{ checked: boolean }>;
             const isChecked = customEvent.detail.checked;
@@ -51,6 +55,45 @@ export class TodoList extends HTMLElement {
     updateCompletedTasks(change: number) {
         this.completedTasksCount += change;
         this.completedTasksLabel.textContent = `Completed Tasks: ${this.completedTasksCount}`;
+    }
+
+    deleteAllTasks() {
+        const tasks = this.list.querySelectorAll('li');
+        tasks.forEach(task => {
+            const checkbox = task.querySelector('todo-item input[type="checkbox"]') as HTMLInputElement;
+            if (checkbox && checkbox.checked) {
+                this.updateCompletedTasks(-1);
+            }
+            task.remove();
+        });
+    }
+
+    deleteManualTasks() {
+        const manualTasks = this.list.querySelectorAll('li .manual-task');
+        manualTasks.forEach(task => {
+            const listItem = task.closest('li');
+            if (listItem) {
+                const checkbox = listItem.querySelector('todo-item input[type="checkbox"]') as HTMLInputElement;
+                if (checkbox && checkbox.checked) {
+                    this.updateCompletedTasks(-1);
+                }
+                listItem.remove();
+            }
+        });
+    }
+
+    deleteApiTasks() {
+        const apiTasks = this.list.querySelectorAll('li .api-task');
+        apiTasks.forEach(task => {
+            const listItem = task.closest('li');
+            if (listItem) {
+                const checkbox = listItem.querySelector('todo-item input[type="checkbox"]') as HTMLInputElement;
+                if (checkbox && checkbox.checked) {
+                    this.updateCompletedTasks(-1);
+                }
+                listItem.remove();
+            }
+        });
     }
 }
 

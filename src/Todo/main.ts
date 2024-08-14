@@ -1,4 +1,6 @@
-import './style.css';
+import './style.scss';
+//import './css/todo-item.scss';
+//import './css/todo-list.scss';
 import { TodoItem } from './TodoItem';
 import { TodoList } from './TodoList';
 import { fetchTasksFromAPI, Todo } from './TodoApi';  
@@ -15,26 +17,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const app = document.querySelector<HTMLDivElement>('#app');
     
     if (app) {
-      app.innerHTML = `
-    <div>
-        <h1>Todo List</h1>
-        <form id="add-task-form">
-            <input type="text" id="task-input" placeholder="Add a new task" />
-            <button type="submit">Add Task</button>
-        </form>
+        app.innerHTML = `
         <div>
-            <input type="number" id="task-count" placeholder="Number of tasks to fetch" min="1" />
-            <button id="fetch-tasks">Fetch Tasks from API</button>
+          <h1 class="todo-app__title">Todo List</h1>
+          <h2 class="todo-app__subtitle">Sebastian Kanižaj</h2>
+          <form id="add-task-form" class="todo-app__form">
+              <input type="text" id="task-input" placeholder="Add a new task" class="todo-app__input" />
+              <button type="submit" class="todo-app__submit-button">Add Task</button>
+          </form>
+          <div class="todo-app__fetch">
+              <input type="number" id="task-count" placeholder="Number of tasks to fetch" min="1" class="todo-app__fetch-input" />
+              <button id="fetch-tasks" class="todo-app__fetch-button">Fetch Tasks from API</button>
+          </div>
+          <div class="todo-app__controls">
+              <button id="delete-all-tasks" class="todo-app__control-button">Delete All Tasks</button>
+              <button id="delete-manual-tasks" class="todo-app__control-button">Delete Manual Tasks</button>
+              <button id="delete-api-tasks" class="todo-app__control-button">Delete API Tasks</button>
+          </div>
+          <p id="message" class="todo-app__message"></p>
+          <todo-list class="todo-app__list"></todo-list>
         </div>
-        <div>
-            <button id="delete-all-tasks">Delete All Tasks</button>
-            <button id="delete-manual-tasks">Delete Manual Tasks</button>
-            <button id="delete-api-tasks">Delete API Tasks</button>
-        </div>
-        <p id="message"></p>
-        <todo-list></todo-list>
-    </div>
-`;
+      `;
 
         const addTaskForm = document.querySelector<HTMLFormElement>('#add-task-form');
         const taskInput = document.querySelector<HTMLInputElement>('#task-input');

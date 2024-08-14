@@ -12,12 +12,14 @@ export class TodoList extends HTMLElement {
         const wrapper = document.createElement('div');
         wrapper.setAttribute('class', 'todo-list');
 
-        this.list = document.createElement('ul');
-        wrapper.appendChild(this.list);
-
         this.completedTasksLabel = document.createElement('span');
+        this.completedTasksLabel.setAttribute('class', 'todo-list__counter');
         this.completedTasksLabel.textContent = `Completed Tasks: 0`;
         wrapper.appendChild(this.completedTasksLabel);
+
+        this.list = document.createElement('ul');
+        this.list.style.listStyleType = 'none';
+        wrapper.appendChild(this.list);
 
         this.shadowRoot?.appendChild(wrapper);
     }
@@ -120,9 +122,6 @@ export class TodoList extends HTMLElement {
     
         this.updateCompletedTasks(-tasksDeletedCount);
     }
-    
-    
-    
 }
 
 customElements.define('todo-list', TodoList);

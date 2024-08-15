@@ -88,10 +88,6 @@ This will start the development server and open the application in your default 
 - Click the checkbox next to a task to mark it as completed.
 - The "Completed Tasks" counter at the top of the list will update accordingly.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
-
 ## Author
 
 **Sebastian Kanižaj**
